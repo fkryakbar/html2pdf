@@ -15,7 +15,8 @@ func GeneratePDF(html string) ([]byte, error) {
 	}
 
 	// Set global options
-	pdfg.Dpi.Set(300)
+	pdfg.Dpi.Set(96) // Default standard screen DPI, significantly reduces size compared to 300
+	pdfg.ImageQuality.Set(75) // Reduce image quality slightly to save space
 	pdfg.Orientation.Set(wkhtmltopdf.OrientationPortrait)
 	pdfg.PageSize.Set(wkhtmltopdf.PageSizeA4)
 

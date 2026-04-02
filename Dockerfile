@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wkhtmltopdf \
     fonts-dejavu-core \
     fonts-freefont-ttf \
+    fonts-liberation \
     fontconfig \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
