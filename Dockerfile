@@ -24,11 +24,14 @@ FROM debian:bookworm-slim
 WORKDIR /app
 
 # Install wkhtmltopdf and dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections \
+    && sed -i -e 's/Components: main/Components: main contrib non-free/g' /etc/apt/sources.list.d/debian.sources 2>/dev/null || true \
+    && sed -i -e 's/main/main contrib non-free/g' /etc/apt/sources.list 2>/dev/null || true \
+    && apt-get update && apt-get install -y --no-install-recommends \
     wkhtmltopdf \
+    ttf-mscorefonts-installer \
     fonts-dejavu-core \
     fonts-freefont-ttf \
-    fonts-liberation \
     fontconfig \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
