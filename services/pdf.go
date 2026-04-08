@@ -34,7 +34,7 @@ func GeneratePDF(html string) ([]byte, error) {
 
 	// Mimic browser "Ctrl + P" behavior
 	page.DisableSmartShrinking.Set(true)
-	page.Zoom.Set(1.0)
+	page.Zoom.Set(0.75) // Skala 0.75 (72/96) untuk memperbaiki isu elemen membesar di wkhtmltopdf
 	page.PrintMediaType.Set(true)
 
 	// Add page to generator
